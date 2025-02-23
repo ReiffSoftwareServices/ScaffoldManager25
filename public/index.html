@@ -5,10 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gerüst Manager</title>
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body>
     <nav class="main-nav">
-        <div class="nav-logo">Gerüst Manager</div>
+        <div class="nav-header">
+            <div class="nav-logo">Gerüst Manager</div>
+            <div class="settings-icon">
+                <a href="#" data-page="stammdaten" class="settings-link">
+                    <i class="fas fa-cog"></i> Stammdaten
+                </a>
+            </div>
+        </div>
         <ul class="nav-links">
             <li><a href="#" data-page="geruest-anmeldung">Gerüstanmeldung</a></li>
             <li><a href="#" data-page="geruest-umbau">Gerüstumbau</a></li>
@@ -21,6 +30,82 @@
     <main id="main-content">
         <!-- Content will be loaded here -->
     </main>
+    <div id="geruest-form" class="hidden">
+        <div class="space-y-6 p-6">
+            <!-- Hauptkarte -->
+            <div class="bg-white rounded-lg shadow p-6">
+                <h2 class="text-2xl font-bold mb-6">Gerüstanmeldung</h2>
+                
+                <!-- Foto-Bereich -->
+                <div class="mb-6" id="photo-section">
+                    <button id="take-photo" class="w-full bg-blue-500 text-white p-2 rounded flex items-center justify-center gap-2">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path d="M3 9a2 2 0 0 1 2-2h1a2 2 0 0 0 2-2 1 1 0 0 1 1-1h6a1 1 0 0 1 1 1 2 2 0 0 0 2 2h1a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V9z"/>
+                            <path d="M15 13a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
+                        </svg>
+                        Foto aufnehmen
+                    </button>
+                </div>
+
+                <!-- Anmelder -->
+                <div class="mb-6">
+                    <label class="block text-sm font-medium mb-2">Anmelder</label>
+                    <select id="anmelder" class="w-full border rounded p-2">
+                        <option value="">Anmelder auswählen</option>
+                        <option value="christoph">Christoph Lehnertz</option>
+                        <option value="jan">Jan Reiff</option>
+                        <option value="max">Max Mustermann</option>
+                    </select>
+                </div>
+
+                <!-- Basis-Informationen -->
+                <div class="grid grid-cols-2 gap-4 mb-6">
+                    <div>
+                        <label class="block text-sm font-medium mb-2">Bereich</label>
+                        <select id="bereich" class="w-full border rounded p-2">
+                            <option value="">Bereich auswählen</option>
+                            <option value="stahlbau">Stahlbau</option>
+                            <option value="rohleitung">Rohleitung</option>
+                            <option value="malerarbeiten">Malerarbeiten</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium mb-2">Anlage</label>
+                        <input type="text" id="anlage" class="w-full border rounded p-2" placeholder="Anlage eingeben">
+                    </div>
+                </div>
+
+                <!-- Kubatur -->
+                <div class="border rounded p-4 mb-6">
+                    <h3 class="font-medium mb-4">Kubatur des Gerüstes</h3>
+                    <div class="grid grid-cols-3 gap-4">
+                        <div>
+                            <label class="block text-sm font-medium mb-2">Länge (m)</label>
+                            <input type="number" id="length" class="w-full border rounded p-2" placeholder="0">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium mb-2">Breite (m)</label>
+                            <input type="number" id="width" class="w-full border rounded p-2" placeholder="0">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium mb-2">Höhe (m)</label>
+                            <input type="number" id="height" class="w-full border rounded p-2" placeholder="0">
+                        </div>
+                    </div>
+                    <div class="mt-4 bg-gray-50 p-3 rounded">
+                        <span>Berechnetes Volumen: </span>
+                        <span id="volume">0</span>
+                        <span>m³</span>
+                    </div>
+                </div>
+
+                <!-- Submit Button -->
+                <button id="submit-form" class="w-full bg-blue-500 text-white p-2 rounded">
+                    Gerüst anmelden
+                </button>
+            </div>
+        </div>
+    </div>
     <script src="app.js"></script>
 </body>
 </html> 
