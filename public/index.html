@@ -4,108 +4,155 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gerüst Manager</title>
-    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="styles.css" rel="stylesheet">
 </head>
 <body>
-    <nav class="main-nav">
-        <div class="nav-header">
-            <div class="nav-logo">Gerüst Manager</div>
-            <div class="settings-icon">
-                <a href="#" data-page="stammdaten" class="settings-link">
-                    <i class="fas fa-cog"></i> Stammdaten
-                </a>
-            </div>
+    <nav class="app-bar">
+        <div class="app-bar-main">
+            <h1>Gerüst Manager</h1>
+            <nav class="nav-tabs">
+                <a href="#" data-page="geruest-anmeldung" class="active">Gerüstanmeldung</a>
+                <a href="#" data-page="geruest-umbau">Gerüstumbau</a>
+                <a href="#" data-page="geruest-erweiterung">Gerüsterweiterung</a>
+                <a href="#" data-page="aufmass-kontrolle">Aufmaßkontrolle</a>
+                <a href="#" data-page="geruest-abmeldung">Gerüstabmeldung</a>
+                <a href="#" data-page="geruest-buch">Gerüstbuch</a>
+            </nav>
+            <button class="icon-button" data-page="stammdaten">
+                <span class="material-icons">settings</span>
+            </button>
         </div>
-        <ul class="nav-links">
-            <li><a href="#" data-page="geruest-anmeldung">Gerüstanmeldung</a></li>
-            <li><a href="#" data-page="geruest-umbau">Gerüstumbau</a></li>
-            <li><a href="#" data-page="geruest-erweiterung">Gerüsterweiterung</a></li>
-            <li><a href="#" data-page="aufmass-kontrolle">Aufmaßkontrolle</a></li>
-            <li><a href="#" data-page="geruest-abmeldung">Gerüstabmeldung</a></li>
-            <li><a href="#" data-page="geruest-uebersicht">Gerüstübersicht</a></li>
-        </ul>
     </nav>
-    <main id="main-content">
-        <!-- Content will be loaded here -->
-    </main>
-    <div id="geruest-form" class="hidden">
-        <div class="space-y-6 p-6">
-            <!-- Hauptkarte -->
-            <div class="bg-white rounded-lg shadow p-6">
-                <h2 class="text-2xl font-bold mb-6">Gerüstanmeldung</h2>
-                
+    <main id="main-content" class="container">
+        <!-- Gerüstanmeldung -->
+        <div id="geruest-anmeldung" class="page">
+            <div class="page-header">
+                <h2>Gerüstanmeldung</h2>
+            </div>
+            
+            <div class="md-card">
                 <!-- Foto-Bereich -->
-                <div class="mb-6" id="photo-section">
-                    <button id="take-photo" class="w-full bg-blue-500 text-white p-2 rounded flex items-center justify-center gap-2">
-                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path d="M3 9a2 2 0 0 1 2-2h1a2 2 0 0 0 2-2 1 1 0 0 1 1-1h6a1 1 0 0 1 1 1 2 2 0 0 0 2 2h1a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V9z"/>
-                            <path d="M15 13a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
-                        </svg>
+                <div class="md-card-section">
+                    <button class="md-button-text md-button-with-icon">
+                        <span class="material-icons">photo_camera</span>
                         Foto aufnehmen
                     </button>
-                </div>
-
-                <!-- Anmelder -->
-                <div class="mb-6">
-                    <label class="block text-sm font-medium mb-2">Anmelder</label>
-                    <select id="anmelder" class="w-full border rounded p-2">
-                        <option value="">Anmelder auswählen</option>
-                        <option value="christoph">Christoph Lehnertz</option>
-                        <option value="jan">Jan Reiff</option>
-                        <option value="max">Max Mustermann</option>
-                    </select>
-                </div>
-
-                <!-- Basis-Informationen -->
-                <div class="grid grid-cols-2 gap-4 mb-6">
-                    <div>
-                        <label class="block text-sm font-medium mb-2">Bereich</label>
-                        <select id="bereich" class="w-full border rounded p-2">
-                            <option value="">Bereich auswählen</option>
-                            <option value="stahlbau">Stahlbau</option>
-                            <option value="rohleitung">Rohleitung</option>
-                            <option value="malerarbeiten">Malerarbeiten</option>
-                        </select>
-                    </div>
-                    <div>
-                        <label class="block text-sm font-medium mb-2">Anlage</label>
-                        <input type="text" id="anlage" class="w-full border rounded p-2" placeholder="Anlage eingeben">
+                    
+                    <!-- Erfolgsmeldung -->
+                    <div class="md-alert md-alert-success">
+                        <span class="material-icons">check_circle</span>
+                        <span>Foto wurde erfolgreich aufgenommen</span>
                     </div>
                 </div>
 
-                <!-- Kubatur -->
-                <div class="border rounded p-4 mb-6">
-                    <h3 class="font-medium mb-4">Kubatur des Gerüstes</h3>
-                    <div class="grid grid-cols-3 gap-4">
-                        <div>
-                            <label class="block text-sm font-medium mb-2">Länge (m)</label>
-                            <input type="number" id="length" class="w-full border rounded p-2" placeholder="0">
-                        </div>
-                        <div>
-                            <label class="block text-sm font-medium mb-2">Breite (m)</label>
-                            <input type="number" id="width" class="w-full border rounded p-2" placeholder="0">
-                        </div>
-                        <div>
-                            <label class="block text-sm font-medium mb-2">Höhe (m)</label>
-                            <input type="number" id="height" class="w-full border rounded p-2" placeholder="0">
+                <form class="md-form">
+                    <!-- Anmelder -->
+                    <div class="md-card-section">
+                        <div class="md-form-field">
+                            <label for="anmelder" class="md-label">Anmelder</label>
+                            <select id="anmelder" class="md-select">
+                                <option value="">Anmelder auswählen</option>
+                            </select>
+                            <div class="md-contact-info">
+                                <div class="md-contact-item">
+                                    <span class="material-icons">phone</span>
+                                    <span>0176-12345678</span>
+                                </div>
+                                <div class="md-contact-item">
+                                    <span class="material-icons">email</span>
+                                    <span>test@geruestapp.de</span>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                    <div class="mt-4 bg-gray-50 p-3 rounded">
-                        <span>Berechnetes Volumen: </span>
-                        <span id="volume">0</span>
-                        <span>m³</span>
-                    </div>
-                </div>
 
-                <!-- Submit Button -->
-                <button id="submit-form" class="w-full bg-blue-500 text-white p-2 rounded">
-                    Gerüst anmelden
-                </button>
+                    <!-- Standort-Informationen -->
+                    <div class="md-card-section">
+                        <h3 class="md-subheading">Standort-Informationen</h3>
+                        
+                        <div class="md-form-row">
+                            <div class="md-form-field">
+                                <label for="equipment" class="md-label">Equipment</label>
+                                <input type="text" id="equipment" class="md-input" placeholder="Equipment eingeben">
+                            </div>
+                            <div class="md-form-field">
+                                <label for="ebene" class="md-label">Ebene</label>
+                                <input type="text" id="ebene" class="md-input" placeholder="Ebene eingeben">
+                            </div>
+                        </div>
+                        
+                        <div class="md-form-row">
+                            <div class="md-form-field">
+                                <label for="oertlichkeit" class="md-label">Örtlichkeit</label>
+                                <input type="text" id="oertlichkeit" class="md-input" placeholder="Örtlichkeit eingeben">
+                            </div>
+                            <div class="md-form-field">
+                                <label for="koordinate" class="md-label">Koordinate</label>
+                                <input type="text" id="koordinate" class="md-input" placeholder="Koordinate eingeben">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Kubatur -->
+                    <div class="md-card-section">
+                        <h3 class="md-subheading">Kubatur des Gerüstes</h3>
+                        
+                        <div class="md-form-row md-form-row-3">
+                            <div class="md-form-field">
+                                <label for="length" class="md-label">Länge (m)</label>
+                                <input type="number" id="length" class="md-input kubatur-input" value="0" min="0" step="0.1">
+                            </div>
+                            <div class="md-form-field">
+                                <label for="width" class="md-label">Breite (m)</label>
+                                <input type="number" id="width" class="md-input kubatur-input" value="0" min="0" step="0.1">
+                            </div>
+                            <div class="md-form-field">
+                                <label for="height" class="md-label">Höhe (m)</label>
+                                <input type="number" id="height" class="md-input kubatur-input" value="0" min="0" step="0.1">
+                            </div>
+                        </div>
+                        
+                        <div class="md-volume-display">
+                            Berechnetes Volumen: <span id="volume">0</span> m³
+                        </div>
+                    </div>
+                    
+                    <!-- Datum -->
+                    <div class="md-card-section">
+                        <div class="md-form-row">
+                            <div class="md-form-field">
+                                <label for="anmelde_datum" class="md-label">Anmeldedatum</label>
+                                <input type="date" id="anmelde_datum" class="md-input" value="2023-06-15">
+                            </div>
+                            <div class="md-form-field">
+                                <label for="aufbau_datum" class="md-label">Aufbaudatum</label>
+                                <input type="date" id="aufbau_datum" class="md-input" value="2023-06-20">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Submit Button -->
+                    <div class="md-card-actions">
+                        <button type="submit" class="md-button-contained">
+                            Gerüst anmelden
+                        </button>
+                    </div>
+                </form>
             </div>
         </div>
-    </div>
+
+        <!-- Andere Seiten -->
+        <div id="geruest-umbau" class="page hidden">
+            <!-- Inhalt für Gerüstumbau -->
+        </div>
+        <div id="geruest-buch" class="page hidden">
+            <!-- Inhalt für Gerüstbuch -->
+        </div>
+        <!-- ... weitere Seiten ... -->
+    </main>
     <script src="app.js"></script>
 </body>
 </html> 
